@@ -35,4 +35,9 @@ short list of its shortcomings off the top of my head is:
 * Lack of configurability and no configuration tool. Configuration requires
 some programming skills.
 * Miminal error handling.
-* 
+
+Planned Features
+
+* Support mp3 master files.
+* Some sort of configuration tool.
+* Multi-threaded generation
