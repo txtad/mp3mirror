@@ -1,0 +1,75 @@
+#!/usr/bin/python -O
+#
+# This program walks over the MP3 mirror looking for mp3 files that
+# don't have a corresponding master file. Any unidentified files are
+# noted and should be handled manually.
+#
+
+import os
+import sys
+import re
+import tempfile
+import stat
+import mp3constants
+import ansi
+
+RED = "\033[01;31m"
+GREEN = "\033[01;32m"
+YELLOW = "\033[01;33m"
+BLUE = "\033[01;34m"
+WHITE = "\033[01;37m"
+NORM = "\033[0m"
+
+reOGG = re.compile('\.ogg$')
+reFLAC = re.compile('\.flac$')
+reMP3 = re.compile('\.mp3$')
+
+def fileExists(file):
+    return os.access(file, os.F_OK)
+
+def fixMP3Mirror(master, mirror):
+    print 'Examining music mirror for dead files...'
+    filecount = 0
+    for root, dirs, files in os.walk(mirror):
+
+        masterroot = root.replace(mp3constants.MP3MIRROR, mp3constants.MUSICDIR)
+        
+        for file in files:
+            filecount += 1
+            if filecount % 5 == 0:
+                os.write(0, '%s%s%s' % (ansi.SAVE_CURSOR, filecount, ansi.UNSAVE_CURSOR))
+            filetype = ''
+            fqmirrorfile = "%s/%s" % (root, file)
+
+            match = reMP3.search(file)
+            if match != None:
+                oggfile = reMP3.sub('.ogg', file)
+                flacfile = reMP3.sub('.flac', file)
+            else:
+                print "%sUnknown file type for: %s%s%s" % (RED, BLUE, fqmirrorfile, NORM)
+                print '%sPlease take appropriate action on this file manually%s' % (YELLOW, NORM)
+                print
+                continue
+                
+            needMakeMP3 = False
+
+            if fileExists(masterroot + '/' + oggfile) == False:
+                if fileExists(masterroot + '/' + flacfile) == False:
+                    print "Deleting file: %s%s%s" % (YELLOW, fqmirrorfile, NORM)
+                    os.unlink(fqmirrorfile)
+                    
+        if len(os.listdir(root)) == 0:
+            print "Deleting empty directory: %s%s%s" % (YELLOW, root, NORM)
+            os.rmdir(root)
+            
+    print 'Done deleting dead files.'
+                
+                
+def main():
+    fixMP3Mirror(mp3constants.MUSICDIR, mp3constants.MP3MIRROR)
+
+if __name__ == '__main__':
+    sys.exit(main())
+
+
+

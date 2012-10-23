@@ -1,0 +1,40 @@
+#!/usr/bin/python -O
+
+import os
+import sys
+import re
+import tempfile
+import stat
+
+RED = "\033[01;31m"
+GREEN = "\033[01;32m"
+YELLOW = "\033[01;33m"
+BLUE = "\033[01;34m"
+WHITE = "\033[01;37m"
+NORM = "\033[0m"
+
+MP3MIRROR = '/usr/local/share/mp3/'
+
+def searchForDupes(mirror):
+    print 'Examining music archive for possible duplicates...'
+    filecount = 0
+    for root, dirs, files in os.walk(mirror):
+        filelist = []
+        for file in files:
+            filelist.append(file)
+            filecount += 1
+        filelist.sort()
+        for idx in range(len(filelist) - 1):
+            if filelist[idx][0:2] == filelist[idx + 1][0:2]:
+                print "In %s%s%s" % (GREEN, root, NORM)
+                print "    %s%s%s may dupe %s%s%s" % (YELLOW, filelist[idx], NORM, YELLOW, filelist[idx + 1], NORM)
+    print 'Examined %s files' % (filecount)
+                
+def main():
+    searchForDupes(MP3MIRROR)
+
+if __name__ == '__main__':
+    sys.exit(main())
+
+
+
