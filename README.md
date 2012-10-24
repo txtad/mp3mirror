@@ -25,15 +25,16 @@ creating an open source project. The need for this project was very specific
 to me and I'm not sure if anyone else has the same need. However, it is 
 possible that someone does and if so, I hope they find it helpful. Its current
 state is not very polished, as it was my first Python project and as soon as 
-it was "good enough" I stopped working on it and moved on to other things. The
-short list of its shortcomings off the top of my head is:
+it was "good enough" I stopped working on it and moved on to other things.
+
+### Current Shortcomings
 
 * Lack of documentation.
 * Lack of configurability and no configuration tool. Configuration requires
 some programming skills.
 * Miminal error handling.
 
-Planned Features
+### Planned Features
 
 * Support mp3 master files.
 * Some sort of configuration tool or at least configuration file.
