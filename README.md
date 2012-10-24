@@ -1,10 +1,8 @@
-mp3mirror
-=========
+# mp3mirror
 
 FLAC and OGG to MP3 mirroring script.
 
-About
------
+## About
 
 mp3mirror is a small collection of Python scripts I initially wrote as my 
 first Python project around 2003. The need for it arose from my desire to rip
@@ -20,8 +18,7 @@ repository, creating an mp3 copy in the mirror directory of each .ogg or .flac
 file encountered in the master. The directory and filename structure of the 
 master directory are maintained in the mirror.
 
-Current State of mp3mirror as of Late 2012
-------------------------------------------
+## Current State of mp3mirror as of Late 2012
 
 I am releasing mp3mirror as an open source project mostly as an exercise of
 creating an open source project. The need for this project was very specific
@@ -42,8 +39,7 @@ Planned Features
 * Some sort of configuration tool or at least configuration file.
 * Multi-threaded generation.
 
-License
--------
+## License
 
 Copyright (C) 2003-2012 Tad Marko (tad@markoland.net)
 
