@@ -1,3 +1,12 @@
+#!/usr/bin/python -O
+#
+# Copyright (C) 2003-2012 Tad Marko (tad@markoland.net)
+#
+# This file is part of the mp3mirror project which has been released under the
+# MIT license. See the README.md file in the root project directory or the 
+# project website (https://github.com/txtad/mp3mirror) for more informaiton.
+#
+
 """The methods in this module are useful for creating and manipulating
 audio files including OGG, FLAC and MP3 format."""
 
