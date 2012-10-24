@@ -18,7 +18,7 @@ nice to have a .flac "master" copy and a more portable .mp3 version as well.
 mp3mirror simply makes a recursive descent into the specified master 
 repository, creating an mp3 copy in the mirror directory of each .ogg or .flac
 file encountered in the master. The directory and filename structure of the 
-master directory is maintained in the mirror.
+master directory are maintained in the mirror.
 
 Current State of mp3mirror as of Late 2012
 ------------------------------------------
